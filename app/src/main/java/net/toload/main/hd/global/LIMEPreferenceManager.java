@@ -375,8 +375,11 @@ public class LIMEPreferenceManager {
 	}
 	
 	public String getIMActivatedState(){
-		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(ctx);
-		return sp.getString("keyboard_state", "0;1;2;3;4;5;6;7;8;9;10;11;12");
+		// 為了避免跳出其它沒有字根的輸入法，先寫死
+		// 數字順序對應 R.array.keyboard
+		return "1;4;6;12";
+		// SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(ctx);
+		// return sp.getString("keyboard_state", "0;1;2;3;4;5;6;7;8;9;10;11;12");
 	}
 	public void setIMActivatedState(String state){
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(ctx);
