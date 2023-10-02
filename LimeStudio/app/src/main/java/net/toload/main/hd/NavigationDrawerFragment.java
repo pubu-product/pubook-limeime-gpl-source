@@ -45,6 +45,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -367,6 +368,12 @@ public class NavigationDrawerFragment extends Fragment {
                     });
 
             AlertDialog alert = builder.create();
+
+            Window window = alert.getWindow();
+            if (window != null) {
+                window.setBackgroundDrawableResource(R.drawable.dialog_shape);
+            }
+
             alert.show();
 
         }else if(item.getItemId() == R.id.action_adfree){

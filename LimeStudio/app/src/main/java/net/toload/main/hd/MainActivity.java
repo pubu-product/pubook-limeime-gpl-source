@@ -52,6 +52,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.Toast;
 
 import com.android.vending.billing.IInAppBillingService;
@@ -220,6 +221,12 @@ public class MainActivity extends AppCompatActivity
                     });
 
             AlertDialog alert = builder.create();
+
+            Window window = alert.getWindow();
+            if (window != null) {
+                window.setBackgroundDrawableResource(R.drawable.dialog_shape);
+            }
+
             alert.show();
 
             /*SetupImFragment ImFragment  = (SetupImFragment) getSupportFragmentManager().findFragmentByTag("SetupImFragment");

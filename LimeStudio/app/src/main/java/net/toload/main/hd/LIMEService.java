@@ -962,7 +962,6 @@ public class LIMEService extends InputMethodService implements
             spaceKeyPress = false;
         }
 
-
         switch (keyCode) {
             // Jeremy '11,5,29 Bypass search and menu combination keys.
             case KeyEvent.KEYCODE_MENU:
@@ -1872,6 +1871,7 @@ public class LIMEService extends InputMethodService implements
         mOptionsDialog = builder.create();
         Window window = mOptionsDialog.getWindow();
         assert window != null;
+        window.setBackgroundDrawableResource(R.drawable.dialog_shape);
         WindowManager.LayoutParams lp = window.getAttributes();
         lp.token = mInputView.getWindowToken();
         lp.type = WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG;
@@ -2029,6 +2029,8 @@ public class LIMEService extends InputMethodService implements
         mOptionsDialog = builder.create();
         Window window = mOptionsDialog.getWindow();
         if (!(window == null)) {
+            window.setBackgroundDrawableResource(R.drawable.dialog_shape);
+
             WindowManager.LayoutParams lp = window.getAttributes();
             lp.token = mCandidateViewStandAlone.getWindowToken();  //Jeremy 12,5,4 it's always there 
             lp.type = WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG;
@@ -2085,6 +2087,8 @@ public class LIMEService extends InputMethodService implements
         // Jeremy '10, 4, 12
         // The IM is not initialialized. do nothing here if window=null.
         if (!(window == null)) {
+            window.setBackgroundDrawableResource(R.drawable.dialog_shape);
+
             WindowManager.LayoutParams lp = window.getAttributes();
             // Jeremy '11,8,28 Use candidate instead of mInputview because mInputView may not present when using physical keyboard
             lp.token = mCandidateViewStandAlone.getWindowToken();  //always there Jeremy '12,5,4 
@@ -2685,10 +2689,10 @@ public class LIMEService extends InputMethodService implements
                 //forceHideCandidateView(); //Jeremy '16,7,19 caused the first composing character missing typed with physical keyboard.
                 if (hasPhysicalKeyPressed) {
                     // cancel the current composing first before closing soft keyboard and switched to physical keyboarding typing.
-                    InputConnection ic = getCurrentInputConnection();
-                    if (ic != null && mPredictionOn) ic.setComposingText("", 0);
-                    mInputView.closing();
-                    requestHideSelf(0);
+//                    InputConnection ic = getCurrentInputConnection();
+//                    if (ic != null && mPredictionOn) ic.setComposingText("", 0);
+//                    mInputView.closing();
+//                    requestHideSelf(0);
                     // preserved the last character typed with physical keyboard in composing
                     if(mComposing.length() > 1)
                         mComposing.delete(0, mComposing.length()-1);

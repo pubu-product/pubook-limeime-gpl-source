@@ -48,6 +48,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -802,6 +803,12 @@ public class SetupImFragment extends Fragment {
                                 });
 
                         AlertDialog alert = builder.create();
+
+                        Window window = alert.getWindow();
+                        if (window != null) {
+                            window.setBackgroundDrawableResource(R.drawable.dialog_shape);
+                        }
+
                         alert.show();
                     }
                 });
@@ -854,6 +861,12 @@ public class SetupImFragment extends Fragment {
                 });
 
         AlertDialog alert = builder.create();
+
+        Window window = alert.getWindow();
+        if (window != null) {
+            window.setBackgroundDrawableResource(R.drawable.dialog_shape);
+        }
+
         alert.show();
     }
 

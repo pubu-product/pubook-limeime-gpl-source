@@ -33,6 +33,7 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -177,6 +178,12 @@ public class ManageImEditDialog extends DialogFragment {
 								dialog.dismiss();
 							}
 						});
+
+				Window window = alertDialog.getWindow();
+				if (window != null) {
+					window.setBackgroundDrawableResource(R.drawable.dialog_shape);
+				}
+
 				alertDialog.show();
 			}
 		});
@@ -211,6 +218,12 @@ public class ManageImEditDialog extends DialogFragment {
 								dialog.dismiss();
 							}
 						});
+
+				Window window = alertDialog.getWindow();
+				if (window != null) {
+					window.setBackgroundDrawableResource(R.drawable.dialog_shape);
+				}
+
 				alertDialog.show();
 			}
 		});
