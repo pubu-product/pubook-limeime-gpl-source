@@ -23,10 +23,12 @@
   ~  */
   -->
 
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true"
-        android:drawable="@drawable/sym_flat_keyboard_search_hl" />
-    <item
-        android:drawable="@drawable/sym_flat_keyboard_search" />
 
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:state_pressed="true">
+    <bitmap android:src="@drawable/sym_flat_keyboard_search" android:tint="@color/color_black" />
+</item>
+<item>
+    <bitmap android:src="@drawable/sym_flat_keyboard_search" android:tint="@color/color_black" />
+</item>
 </selector>

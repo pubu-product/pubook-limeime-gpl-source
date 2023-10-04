@@ -191,10 +191,10 @@
         <item name="keyTextColorNormal">@color/foreground_light</item>
         <item name="keyTextColorPressed">@color/color_common_green_hl</item>
 
-        <item name="functionKeyTextColorNormal">@color/second_foreground_light</item>
+        <item name="functionKeyTextColorNormal">@color/foreground_light</item>
         <item name="functionKeyTextColorPressed">@color/color_common_light_green_hl</item>
 
-        <item name="keySubLabelTextColorNormal">@color/third_foreground_light</item>
+        <item name="keySubLabelTextColorNormal">@color/foreground_light</item>
         <item name="keySubLabelTextColorPressed">@color/color_common_light_green_hl</item>
 
         <item name="keyPreviewOffset">@dimen/key_preview_offset</item>
@@ -208,7 +208,7 @@
         <item name="spacePreviewTopPadding">@dimen/spacebar_preview_top_padding</item>
         <item name="previewTopPadding">@dimen/preview_top_padding</item>
 
-        <item name="shadowColor">#BB000000</item>
+        <item name="shadowColor">#00000000</item>
         <item name="shadowRadius">0</item>
         <item name="backgroundDimAmount">0.5</item>
         <item name="symbolColorScheme">white</item>
@@ -219,13 +219,13 @@
         <item name="popupHint">@drawable/hint_popup</item>
 
         <item name="keyTextColorNormal">@color/foreground_light</item>
-        <item name="keyTextColorPressed">@color/color_common_green_hl</item>
+        <item name="keyTextColorPressed">@color/foreground_light</item>
 
-        <item name="functionKeyTextColorNormal">@color/second_foreground_light</item>
-        <item name="functionKeyTextColorPressed">@color/color_common_light_green_hl</item>
+        <item name="functionKeyTextColorNormal">@color/foreground_light</item>
+        <item name="functionKeyTextColorPressed">@color/foreground_light</item>
 
-        <item name="keySubLabelTextColorNormal">@color/third_foreground_light</item>
-        <item name="keySubLabelTextColorPressed">@color/color_common_light_green_hl</item>
+        <item name="keySubLabelTextColorNormal">@color/foreground_light</item>
+        <item name="keySubLabelTextColorPressed">@color/foreground_light</item>
 
     </style>
 
@@ -237,10 +237,10 @@
         <item name="keyTextColorNormal">@color/foreground_dark</item>
         <item name="keyTextColorPressed">@color/color_common_green_hl</item>
 
-        <item name="functionKeyTextColorNormal">@color/third_foreground_dark</item>
+        <item name="functionKeyTextColorNormal">@color/foreground_light</item>
         <item name="functionKeyTextColorPressed">@color/color_common_light_green_hl</item>
 
-        <item name="keySubLabelTextColorNormal">@color/second_foreground_dark</item>
+        <item name="keySubLabelTextColorNormal">@color/foreground_light</item>
         <item name="keySubLabelTextColorPressed">@color/color_common_light_green_hl</item>
     </style>
 
@@ -367,15 +367,15 @@
         <!-- color of  different types of candidates   -->
         <item name="candidateNormalTextColor">@color/foreground_light</item>
         <item name="candidateNormalTextHighlightColor">@color/foreground_light</item>
-        <item name="composingCodeColor">@color/color_common_green_hl</item>
+        <item name="composingCodeColor">@color/foreground_light</item>
         <item name="composingCodeHighlightColor">@color/third_background_light</item>
         <!-- color of  spacer between candidate   -->
         <item name="spacerColor">@color/candidate_spacer</item>
         <!-- color of  selection key display for physical keyboard   -->
         <item name="selKeyColor">@color/foreground_light</item>
-        <item name="selKeyShiftedColor">@color/color_common_green_hl</item>
+        <item name="selKeyShiftedColor">@color/foreground_light</item>
         <!-- color of  composing text view above candidate view   -->
-        <item name="composingTextColor">@color/second_foreground_light</item>
+        <item name="composingTextColor">@color/foreground_light</item>
         <item name="composingBackgroundColor">@color/composing_background_light</item>
     </style>
     <style name="LIMECandidateView.Light"  parent = "LIMECandidateView">
@@ -388,15 +388,15 @@
         <!-- color of  different types of candidates   -->
         <item name="candidateNormalTextColor">@color/foreground_light</item>
         <item name="candidateNormalTextHighlightColor">@color/third_background_light</item>
-        <item name="composingCodeColor">@color/color_common_green_hl</item>
+        <item name="composingCodeColor">@color/foreground_light</item>
         <item name="composingCodeHighlightColor">@color/third_background_light</item>
         <!-- color of  spacer between candidate   -->
         <item name="spacerColor">@color/candidate_spacer</item>
         <!-- color of  selection key display for physical keyboard   -->
         <item name="selKeyColor">@color/foreground_light</item>
-        <item name="selKeyShiftedColor">@color/color_common_green_hl</item>
+        <item name="selKeyShiftedColor">@color/foreground_light</item>
         <!-- color of  composing text view above candidate view   -->
-        <item name="composingTextColor">@color/second_foreground_light</item>
+        <item name="composingTextColor">@color/foreground_light</item>
         <item name="composingBackgroundColor">@color/composing_background_light</item>
     </style>
     <style name="LIMECandidateView.Dark"  parent = "LIMECandidateView">

@@ -26,10 +26,10 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle" >
     <corners
-        android:radius="3dp"
+        android:radius="2dp"
         />
     <solid
-        android:color="#FFFAFAFA"
+        android:color="#FFFFFFFF"
         />
     <padding
         android:left="1dp"
@@ -44,7 +44,7 @@
 
     <stroke
         android:width="2dp"
-        android:color="#B0C8C8C8"
+        android:color="#000000"
         />
 
 </shape>

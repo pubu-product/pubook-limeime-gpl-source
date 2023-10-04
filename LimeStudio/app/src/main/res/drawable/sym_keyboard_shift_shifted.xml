@@ -24,16 +24,24 @@
   -->
 
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checkable="true" android:state_checked="true" android:state_pressed="true"
-        android:drawable="@drawable/sym_flat_keyboard_shift_normal_unlocked" />
-    <item android:state_checkable="true" android:state_checked="true"
-        android:drawable="@drawable/sym_flat_keyboard_shift_locked" />
-    <item android:state_checkable="true" android:state_pressed="true"
-        android:drawable="@drawable/sym_flat_keyboard_shift_locked" />
-    <item android:state_checkable="true"
-        android:drawable="@drawable/sym_flat_keyboard_shift_pressed_unlocked" />
+    <item android:state_checkable="true" android:state_checked="true" android:state_pressed="true">
+        <bitmap android:src="@drawable/sym_flat_keyboard_shift_normal_unlocked" android:tint="@color/color_black" />
+    </item>
 
+    <item android:state_checkable="true" android:state_checked="true">
+        <bitmap android:src="@drawable/sym_flat_keyboard_shift_locked" android:tint="@color/color_common_light_green_hl" />
+    </item>
 
+    <item android:state_checkable="true" android:state_pressed="true">
+        <bitmap android:src="@drawable/sym_flat_keyboard_shift_locked" android:tint="@color/color_common_light_green_hl" />
+    </item>
 
+    <item android:state_checkable="true">
+        <bitmap android:src="@drawable/sym_flat_keyboard_shift_pressed_unlocked" android:tint="@color/color_common_light_green_hl" />
+    </item>
+
+    <item>
+        <bitmap android:src="@drawable/sym_flat_keyboard_shift_pressed_unlocked" android:tint="@color/color_common_light_green_hl" />
+    </item>
 
 </selector>
