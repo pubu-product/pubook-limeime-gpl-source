@@ -34,19 +34,66 @@ android {
 
         minSdkVersion 14
         targetSdkVersion 27
-        versionCode 528
+        versionCode 529
         versionName '5.2.1'
 
         multiDexEnabled true
     }
+
+    flavorDimensions "default"
+    productFlavors {
+        PubuReader {
+            dimension "default"
+            versionNameSuffix "-reader"
+        }
+        PubuReaderPro {
+            dimension "default"
+            versionNameSuffix "-readerpro"
+        }
+    }
+
+    signingConfigs {
+        pubu_reader_sign {
+            storeFile file(PUBU_READER_RELEASE_STORE_FILE)
+            storePassword PUBU_READER_RELEASE_STORE_PASSWORD
+            keyAlias PUBU_READER_RELEASE_KEY_ALIAS
+            keyPassword PUBU_READER_RELEASE_KEY_PASSWORD
+        }
+
+        pubu_reader_pro_sign {
+            storeFile file(PUBU_READER_PRO_RELEASE_STORE_FILE)
+            storePassword PUBU_READER_PRO_RELEASE_STORE_PASSWORD
+            keyAlias PUBU_READER_PRO_RELEASE_KEY_ALIAS
+            keyPassword PUBU_READER_PRO_RELEASE_KEY_PASSWORD
+        }
+    }
+
+    sourceSets {
+        PubuReader {
+            java.srcDirs = ['src/main/java']
+            res.srcDirs = ['src/main/res']
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+        }
+        PubuReaderPro{
+            java.srcDirs = ['src/main/java']
+            res.srcDirs = ['src/main/res']
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+        }
+    }
+
     buildTypes {
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.pubu_reader_sign
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    productFlavors {
-    }
+
     packagingOptions {
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/NOTICE'
