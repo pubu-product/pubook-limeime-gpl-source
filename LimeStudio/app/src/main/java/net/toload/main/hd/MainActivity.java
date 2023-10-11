@@ -221,12 +221,6 @@ public class MainActivity extends AppCompatActivity
                     });
 
             AlertDialog alert = builder.create();
-
-            Window window = alert.getWindow();
-            if (window != null) {
-                window.setBackgroundDrawableResource(R.drawable.dialog_shape);
-            }
-
             alert.show();
 
             /*SetupImFragment ImFragment  = (SetupImFragment) getSupportFragmentManager().findFragmentByTag("SetupImFragment");

@@ -68,6 +68,7 @@ import net.toload.main.hd.keyboard.LIMEKeyboardBaseView;
 import net.toload.main.hd.keyboard.LIMEKeyboardView;
 import net.toload.main.hd.keyboard.LIMEMetaKeyKeyListener;
 import net.toload.main.hd.limesettings.LIMEPreferenceHC;
+import net.toload.main.hd.ui.PubuIMPicker;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -76,6 +77,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+
+import consts.Consts;
 
 
 public class LIMEService extends InputMethodService implements
@@ -1871,7 +1874,6 @@ public class LIMEService extends InputMethodService implements
         mOptionsDialog = builder.create();
         Window window = mOptionsDialog.getWindow();
         assert window != null;
-        window.setBackgroundDrawableResource(R.drawable.dialog_shape);
         WindowManager.LayoutParams lp = window.getAttributes();
         lp.token = mInputView.getWindowToken();
         lp.type = WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG;
@@ -2029,8 +2031,6 @@ public class LIMEService extends InputMethodService implements
         mOptionsDialog = builder.create();
         Window window = mOptionsDialog.getWindow();
         if (!(window == null)) {
-            window.setBackgroundDrawableResource(R.drawable.dialog_shape);
-
             WindowManager.LayoutParams lp = window.getAttributes();
             lp.token = mCandidateViewStandAlone.getWindowToken();  //Jeremy 12,5,4 it's always there 
             lp.type = WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG;
@@ -2055,17 +2055,7 @@ public class LIMEService extends InputMethodService implements
             Log.i(TAG, "showIMPicker()");
         buildActivatedIMList();
 
-        AlertDialog.Builder builder;
-
-        builder = new AlertDialog.Builder(this);
-
-        builder.setCancelable(true);
-        builder.setIcon(R.drawable.sym_keyboard_done_light);
-        builder.setNegativeButton(android.R.string.cancel, null);
-        builder.setTitle(getResources().getString(R.string.keyboard_list));
-
-        CharSequence[] items = new CharSequence[activatedIMNameList.size()];// =
-        // getResources().getStringArray(R.array.keyboard);
+        CharSequence[] items = new CharSequence[activatedIMNameList.size()];
         int curKB = 0;
         for (int i = 0; i < activatedIMNameList.size(); i++) {
             items[i] = activatedIMNameList.get(i);
@@ -2073,32 +2063,61 @@ public class LIMEService extends InputMethodService implements
                 curKB = i;
         }
 
-        builder.setSingleChoiceItems(items, curKB,
-                new DialogInterface.OnClickListener() {
 
-                    public void onClick(DialogInterface di, int position) {
-                        di.dismiss();
-                        handleIMSelection(position);
-                    }
-                });
+        if (Consts.isPubookPro()) {
+            mOptionsDialog = createPubuIMPicker(items, curKB);
+        } else {
+            mOptionsDialog = createIMPicker(items, curKB);
+        }
 
-        mOptionsDialog = builder.create();
+        if (mOptionsDialog == null) {
+            return;
+        }
+
         Window window = mOptionsDialog.getWindow();
         // Jeremy '10, 4, 12
         // The IM is not initialialized. do nothing here if window=null.
         if (!(window == null)) {
-            window.setBackgroundDrawableResource(R.drawable.dialog_shape);
-
             WindowManager.LayoutParams lp = window.getAttributes();
             // Jeremy '11,8,28 Use candidate instead of mInputview because mInputView may not present when using physical keyboard
             lp.token = mCandidateViewStandAlone.getWindowToken();  //always there Jeremy '12,5,4 
             lp.type = WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG;
             window.setAttributes(lp);
             window.addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
-
         }
         mOptionsDialog.show();
 
+    }
+
+    private AlertDialog createIMPicker(CharSequence[] items, int current) {
+        AlertDialog.Builder builder= new AlertDialog.Builder(this);
+
+        builder.setCancelable(true);
+        builder.setIcon(R.drawable.sym_keyboard_done_light);
+        builder.setNegativeButton(android.R.string.cancel, null);
+        builder.setTitle(getResources().getString(R.string.keyboard_list));
+
+        builder.setSingleChoiceItems(items, current, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface di, int position) {
+                di.dismiss();
+                handleIMSelection(position);
+            }
+        });
+
+        return builder.create();
+    }
+
+    private AlertDialog createPubuIMPicker(CharSequence[] items, int current) {
+        PubuIMPicker builder = new PubuIMPicker(this);
+
+        builder.setSingleChoice(items, current, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                handleIMSelection(i);
+            }
+        });
+
+        return builder.create();
     }
 
     private void handleIMSelection(int position) {

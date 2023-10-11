@@ -803,12 +803,6 @@ public class SetupImFragment extends Fragment {
                                 });
 
                         AlertDialog alert = builder.create();
-
-                        Window window = alert.getWindow();
-                        if (window != null) {
-                            window.setBackgroundDrawableResource(R.drawable.dialog_shape);
-                        }
-
                         alert.show();
                     }
                 });
@@ -861,12 +855,6 @@ public class SetupImFragment extends Fragment {
                 });
 
         AlertDialog alert = builder.create();
-
-        Window window = alert.getWindow();
-        if (window != null) {
-            window.setBackgroundDrawableResource(R.drawable.dialog_shape);
-        }
-
         alert.show();
     }
 

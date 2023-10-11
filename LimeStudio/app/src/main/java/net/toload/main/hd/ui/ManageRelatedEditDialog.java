@@ -165,12 +165,6 @@ public class ManageRelatedEditDialog extends DialogFragment {
 								dialog.dismiss();
 							}
 						});
-
-				Window window = alertDialog.getWindow();
-				if (window != null) {
-					window.setBackgroundDrawableResource(R.drawable.dialog_shape);
-				}
-
 				alertDialog.show();
 			}
 		});
@@ -211,12 +205,6 @@ public class ManageRelatedEditDialog extends DialogFragment {
 								dialog.dismiss();
 							}
 						});
-
-				Window window = alertDialog.getWindow();
-				if (window != null) {
-					window.setBackgroundDrawableResource(R.drawable.dialog_shape);
-				}
-
 				alertDialog.show();
 			}
 		});
