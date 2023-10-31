@@ -849,7 +849,7 @@ public class LIMEService extends InputMethodService implements
         hasPhysicalKeyPressed = true;
 
         // If user use the physical keyboard then not fixed the candidate view also use the tranparent background
-        mFixedCandidateViewOn = false;
+        mFixedCandidateViewOn = true;
         mCandidateView.setTransparentCandidateView(false);
 
         //hide softkeyboard. Jeremy '12,5,8
@@ -2701,23 +2701,25 @@ public class LIMEService extends InputMethodService implements
                             + ", hasPhysicalKeyPressed:" + hasPhysicalKeyPressed
             );
 
-            if ((!mFixedCandidateViewOn || hasPhysicalKeyPressed)
-                    && mCandidateView != mCandidateViewStandAlone) {
-                mCandidateViewInInputView.clear();
-                mCandidateView = mCandidateViewStandAlone; //Jeremy '12,5,4 use standalone candidateView for physical keyboard (no soft keyboard shown)
-                //forceHideCandidateView(); //Jeremy '16,7,19 caused the first composing character missing typed with physical keyboard.
-                if (hasPhysicalKeyPressed) {
-                    // cancel the current composing first before closing soft keyboard and switched to physical keyboarding typing.
-//                    InputConnection ic = getCurrentInputConnection();
-//                    if (ic != null && mPredictionOn) ic.setComposingText("", 0);
-//                    mInputView.closing();
-//                    requestHideSelf(0);
-                    // preserved the last character typed with physical keyboard in composing
-                    if(mComposing.length() > 1)
-                        mComposing.delete(0, mComposing.length()-1);
-                    updateCandidates();
-                }
-            } else if((mFixedCandidateViewOn || !hasPhysicalKeyPressed ) &&
+//            if ((!mFixedCandidateViewOn || hasPhysicalKeyPressed)
+//                    && mCandidateView != mCandidateViewStandAlone) {
+//                mCandidateViewInInputView.clear();
+//                mCandidateView = mCandidateViewStandAlone; //Jeremy '12,5,4 use standalone candidateView for physical keyboard (no soft keyboard shown)
+//                //forceHideCandidateView(); //Jeremy '16,7,19 caused the first composing character missing typed with physical keyboard.
+//                if (hasPhysicalKeyPressed) {
+//                    // cancel the current composing first before closing soft keyboard and switched to physical keyboarding typing.
+////                    InputConnection ic = getCurrentInputConnection();
+////                    if (ic != null && mPredictionOn) ic.setComposingText("", 0);
+////                    mInputView.closing();
+////                    requestHideSelf(0);
+//                    // preserved the last character typed with physical keyboard in composing
+//                    if(mComposing.length() > 1)
+//                        mComposing.delete(0, mComposing.length()-1);
+//                    updateCandidates();
+//                }
+//            } else if((mFixedCandidateViewOn || !hasPhysicalKeyPressed ) &&
+//                    mCandidateView != mCandidateViewInInputView) {
+            if((mFixedCandidateViewOn || !hasPhysicalKeyPressed ) &&
                     mCandidateView != mCandidateViewInInputView) {
                 mCandidateViewStandAlone.clear();
                 hideCandidateView();
