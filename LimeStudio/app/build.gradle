@@ -34,8 +34,8 @@ android {
 
         minSdkVersion 14
         targetSdkVersion 27
-        versionCode 529
-        versionName '5.2.1'
+        versionCode 530
+        versionName '5.2.2'
 
         multiDexEnabled true
     }
