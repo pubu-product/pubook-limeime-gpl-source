@@ -41,16 +41,6 @@ android {
     }
 
     flavorDimensions "default"
-    productFlavors {
-        PubuReader {
-            dimension "default"
-            versionNameSuffix "-reader"
-        }
-        PubuReaderPro {
-            dimension "default"
-            versionNameSuffix "-readerpro"
-        }
-    }
 
     signingConfigs {
         pubu_reader_sign {
@@ -67,6 +57,22 @@ android {
             keyPassword PUBU_READER_PRO_RELEASE_KEY_PASSWORD
         }
     }
+    
+    productFlavors {
+        def pubuReaderProSigningVariable = signingConfigs.pubu_reader_pro_sign
+        PubuReader {
+            dimension "default"
+            versionNameSuffix "-reader"
+            signingConfig pubuReaderProSigningVariable
+        }
+        PubuReaderPro {
+            dimension "default"
+            versionNameSuffix "-readerpro"
+            signingConfig pubuReaderProSigningVariable
+        }
+    }
+
+
 
     sourceSets {
         PubuReader {
@@ -85,12 +91,13 @@ android {
         debug {
             minifyEnabled false
             shrinkResources false
-            signingConfig signingConfigs.pubu_reader_sign
+            signingConfig signingConfigs.pubu_reader_pro_sign
         }
 
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.pubu_reader_pro_sign
         }
     }
 
