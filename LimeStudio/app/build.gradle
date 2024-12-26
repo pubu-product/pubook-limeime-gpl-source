@@ -56,19 +56,32 @@ android {
             keyAlias PUBU_READER_PRO_RELEASE_KEY_ALIAS
             keyPassword PUBU_READER_PRO_RELEASE_KEY_PASSWORD
         }
+
+        pubu_reader_2_sign {
+            storeFile file(PUBU_READER_2_RELEASE_STORE_FILE)
+            storePassword PUBU_READER_2_RELEASE_STORE_PASSWORD
+            keyAlias PUBU_READER_2_RELEASE_KEY_ALIAS
+            keyPassword PUBU_READER_2_RELEASE_KEY_PASSWORD
+        }
     }
     
     productFlavors {
-        def pubuReaderProSigningVariable = signingConfigs.pubu_reader_pro_sign
+        def pubuReaderSigningVariable = signingConfigs.pubu_reader_2_sign
         PubuReader {
             dimension "default"
             versionNameSuffix "-reader"
-            signingConfig pubuReaderProSigningVariable
+            signingConfig pubuReaderSigningVariable
         }
         PubuReaderPro {
             dimension "default"
             versionNameSuffix "-readerpro"
-            signingConfig pubuReaderProSigningVariable
+            signingConfig pubuReaderSigningVariable
+        }
+
+        PubuReader2 {
+            dimension "default"
+            versionNameSuffix "-readerpro"
+            signingConfig pubuReaderSigningVariable
         }
     }
 
@@ -85,19 +98,24 @@ android {
             res.srcDirs = ['src/main/res']
             manifest.srcFile 'src/main/AndroidManifest.xml'
         }
+        PubuReader2 {
+            java.srcDirs = ['src/main/java']
+            res.srcDirs = ['src/main/res']
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+        }
     }
 
     buildTypes {
         debug {
             minifyEnabled false
             shrinkResources false
-            signingConfig signingConfigs.pubu_reader_pro_sign
+            signingConfig signingConfigs.pubu_reader_2_sign
         }
 
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.pubu_reader_pro_sign
+            signingConfig signingConfigs.pubu_reader_2_sign
         }
     }
 
